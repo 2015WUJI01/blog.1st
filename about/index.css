@@ -1,0 +1,22 @@
+@media screen and (min-width: 541px) {
+    #profile-img {
+        width: 120px;
+    };
+}
+@media screen and (max-width: 540px) {
+    #profile-img {
+        margin: 10px 0;
+        width: 100px;
+    };
+}
+@media screen and (max-width: 507px) {
+    #profile-img {
+        margin: 20px 0;
+        width: 80px;
+    };
+}
+@media screen and (max-width: 470px) {
+    #profile-img {
+        display: none;
+    };
+}
