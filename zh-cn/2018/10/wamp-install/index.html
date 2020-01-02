@@ -47,20 +47,21 @@
   };
 </script>
 
-  <meta name="description" content="date() 方法自定义时间格式。 1echo $showtime &#x3D; date(&quot;Y-m-d H:i:s&quot;); &#x2F;&#x2F; 显示的格式：年-月-日 时:分:秒">
+  <meta name="description" content="安裝 Wamp Server 时，不论是新老电脑，总有人会遇到缺少文件的问题。我也遇到了，查了很久才找到解决的方法，加以总结。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="PHP date() 函数参数">
-<meta property="og:url" content="https:&#x2F;&#x2F;2015wuji01.github.io&#x2F;zh-cn&#x2F;2020&#x2F;01&#x2F;php-date&#x2F;">
+<meta property="og:title" content="WAMP 安裝——缺少文件（VCRUNTIME140.DLL、API-MS-WIN-CRT-RUNTIME-L1-1-0.DLL、MSVCR110.DLL）">
+<meta property="og:url" content="https:&#x2F;&#x2F;2015wuji01.github.io&#x2F;zh-cn&#x2F;2018&#x2F;10&#x2F;wamp-install&#x2F;">
 <meta property="og:site_name" content="苏亦坤的博客">
-<meta property="og:description" content="date() 方法自定义时间格式。 1echo $showtime &#x3D; date(&quot;Y-m-d H:i:s&quot;); &#x2F;&#x2F; 显示的格式：年-月-日 时:分:秒">
+<meta property="og:description" content="安裝 Wamp Server 时，不论是新老电脑，总有人会遇到缺少文件的问题。我也遇到了，查了很久才找到解决的方法，加以总结。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2020-01-01T12:20:20.000Z">
-<meta property="article:modified_time" content="2020-01-01T12:20:20.000Z">
+<meta property="article:published_time" content="2018-10-01T14:03:24.000Z">
+<meta property="article:modified_time" content="2018-10-01T14:03:24.000Z">
 <meta property="article:author" content="WuChienKun">
-<meta property="article:tag" content="日期时间">
+<meta property="article:tag" content="wamp">
+<meta property="article:tag" content="install">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://2015wuji01.github.io/zh-cn/2020/01/php-date/">
+<link rel="canonical" href="https://2015wuji01.github.io/zh-cn/2018/10/wamp-install/">
 
 
 <script id="page-configurations">
@@ -72,7 +73,7 @@
   };
 </script>
 
-  <title>PHP date() 函数参数 | 苏亦坤的博客</title>
+  <title>WAMP 安裝——缺少文件（VCRUNTIME140.DLL、API-MS-WIN-CRT-RUNTIME-L1-1-0.DLL、MSVCR110.DLL） | 苏亦坤的博客</title>
   
 
 
@@ -196,7 +197,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-cn">
-    <link itemprop="mainEntityOfPage" href="https://2015wuji01.github.io/zh-cn/2020/01/php-date/">
+    <link itemprop="mainEntityOfPage" href="https://2015wuji01.github.io/zh-cn/2018/10/wamp-install/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -209,7 +210,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          PHP date() 函数参数
+          WAMP 安裝——缺少文件（VCRUNTIME140.DLL、API-MS-WIN-CRT-RUNTIME-L1-1-0.DLL、MSVCR110.DLL）
         </h1>
 
         <div class="post-meta">
@@ -219,7 +220,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2020-01-01 20:20:20" itemprop="dateCreated datePublished" datetime="2020-01-01T20:20:20+08:00">2020-01-01</time>
+              <time title="创建时间：2018-10-01 22:03:24" itemprop="dateCreated datePublished" datetime="2018-10-01T22:03:24+08:00">2018-10-01</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -227,8 +228,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/PHP/" itemprop="url" rel="index">
-                    <span itemprop="name">PHP</span>
+                  <a href="/categories/software/" itemprop="url" rel="index">
+                    <span itemprop="name">software</span>
                   </a>
                 </span>
             </span>
@@ -244,12 +245,32 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p><code>date()</code> 方法自定义时间格式。</p>
-<figure class="highlight php"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">echo</span> $showtime = date(<span class="string">"Y-m-d H:i:s"</span>); <span class="comment">// 显示的格式：年-月-日 时:分:秒</span></span></pre></td></tr></table></figure>
-
+        <p>安裝 Wamp Server 时，不论是新老电脑，总有人会遇到缺少文件的问题。我也遇到了，查了很久才找到解决的方法，加以总结。</p>
 <a id="more"></a>
 
-<h2 id="相关参数"><a href="#相关参数" class="headerlink" title="相关参数:"></a>相关参数:</h2><p><strong>a</strong> - “am” 或是 “pm”<br><strong>A</strong> - “AM” 或是 “PM”<br><strong>d</strong> - 几日，二位数字，若不足二位则前面补零； 如：“01” 至 “31”<br><strong>D</strong> - 星期几，三个英文字母； 如：“Fri”<br><strong>F</strong> - 月份，英文全名； 如：“January”<br><strong>h</strong> - 12 小时制的小时； 如：“01” 至 “12”<br><strong>H</strong> - 24 小时制的小时； 如：“00” 至 “23”<br><strong>g</strong> - 12 小时制的小时，不足二位不补零； 如：“1” 至 “12”<br><strong>G</strong> - 24 小时制的小时，不足二位不补零； 如：“0” 至 “23”<br><strong>i</strong> - 分钟； 如：“00” 至 “59”<br><strong>j</strong> - 几日，二位数字，若不足二位不补零； 如：“1” 至 “31”<br><strong>l</strong> - 星期几，英文全名； 如：“Friday”<br><strong>m</strong> - 月份，二位数字，若不足二位则在前面补零； 如：“01” 至 “12”<br><strong>n</strong> - 月份，二位数字，若不足二位则不补零； 如：“1” 至 “12”<br><strong>M</strong> - 月份，三个英文字母； 如：“Jan”<br><strong>s</strong> - 秒； 如：“00” 至 “59”<br><strong>S</strong> - 字尾加英文序数，二个英文字母； 如：“th”，“nd”<br><strong>t</strong> - 指定月份的天数； 如：“28” 至 “31”<br><strong>U</strong> - 总秒数<br><strong>w</strong> - 数字型的星期几，如：“0” (星期日) 至 “6” (星期六)<br><strong>Y</strong> - 年，四位数字； 如：“1999”<br><strong>y</strong> - 年，二位数字； 如：“99”<br><strong>z</strong> - 一年中的第几天； 如：“0” 至 “365”</p>
+<h1 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h1><ul>
+<li>win7 SP1 旗舰版</li>
+<li>Wampserver 64bit v3.0.6</li>
+</ul>
+<h1 id="问题描述及解决办法"><a href="#问题描述及解决办法" class="headerlink" title="问题描述及解决办法"></a>问题描述及解决办法</h1><h2 id="VCRUNTIME140-DLL"><a href="#VCRUNTIME140-DLL" class="headerlink" title="VCRUNTIME140.DLL"></a>VCRUNTIME140.DLL</h2><p>第一次安装时，最后提示缺少 <code>VCRUNTIME140.dll</code> 文件，于是尝试下载安装该文件，均失败。</p>
+<p>第二次，参考了一篇文章，了解到 Wamp 官方网站在下载时有提示。因为是英文所以没有在意，按照官网的链接，下载安装了 VC12 的运行库，结果仍提示失败。</p>
+<p>第三次，查阅其他资料，尝试安装 VC15 的运行库，这个问题就解决了。接下来就提示缺失 <code>API-MS-WIN-CRT-RUNTIME-L1-1-0.DLL</code> 文件。</p>
+<p>相关的运行库文件下载地址在下方 “官方给的提示” 中给出，下载对应版本即可。</p>
+<h2 id="API-MS-WIN-CRT-RUNTIME-L1-1-0-DLL"><a href="#API-MS-WIN-CRT-RUNTIME-L1-1-0-DLL" class="headerlink" title="API-MS-WIN-CRT-RUNTIME-L1-1-0.DLL"></a>API-MS-WIN-CRT-RUNTIME-L1-1-0.DLL</h2><p>这个问题是依靠安装 windons 的一个更新 <code>Windows Server 2008 R2 x64 Edition 更新程序 (KB2999226)</code> 来解决。</p>
+<p>参考了一篇文章，简明扼要：</p>
+<blockquote>
+<p>从官网下载了 WAMP3.0 并安装，却提示缺少 api-ms-win-crt-runtime-l1-1-0.dll 文件，依照安装需求安装V15，无效。<br>然后依次VC9，VC10，VC11，VC13, VC15全装了，依然没有这个文件。从另一台服务器拷贝这个文件，用 regsvr32 注册不了，求教51终于得到正解，这个文件需要安装 KB2999226 。至此解决。</p>
+<p>官方解释：<br><a href="https://helpx.adobe.com/tw/creative-cloud/kb/error_on_launch.html" target="_blank" rel="noopener">https://helpx.adobe.com/tw/creative-cloud/kb/error_on_launch.html</a><br><a href="https://support.microsoft.com/zh-tw/kb/2999226" target="_blank" rel="noopener">https://support.microsoft.com/zh-tw/kb/2999226</a></p>
+<p>KB2999226下载地址：<br><a href="https://www.microsoft.com/en-us/download/details.aspx?id=49062" target="_blank" rel="noopener">https://www.microsoft.com/en-us/download/details.aspx?id=49062</a></p>
+</blockquote>
+<h2 id="MSVCR110-DLL"><a href="#MSVCR110-DLL" class="headerlink" title="MSVCR110.DLL"></a>MSVCR110.DLL</h2><p>没有遇到缺失此文件的提示，查阅相关资料，安装 VC运行库 应该就能解决该问题。</p>
+<h2 id="官方给的提示："><a href="#官方给的提示：" class="headerlink" title="官方给的提示："></a>官方给的提示：</h2><blockquote>
+<p>　　— Visual C++ Packages —<br>　　The MSVC runtime libraries VC9, VC10, VC11 are required for Wampserver 2.4, 2.5 and 3.0, even if you use only Apache and PHP versions with VC11. Runtimes VC13, VC14 is required for PHP 7 and Apache 2.4.17</p>
+<p>　　– VC9 Packages (Visual C++ 2008 SP1)<br>　　<a href="http://www.microsoft.com/en-us/download/details.aspx?id=5582" target="_blank" rel="noopener">http://www.microsoft.com/en-us/download/details.aspx?id=5582</a><br>　　<a href="http://www.microsoft.com/en-us/download/details.aspx?id=2092" target="_blank" rel="noopener">http://www.microsoft.com/en-us/download/details.aspx?id=2092</a><br>　　<br>　　– VC10 Packages (Visual C++ 2010 SP1)<br>　　<a href="http://www.microsoft.com/en-us/download/details.aspx?id=8328" target="_blank" rel="noopener">http://www.microsoft.com/en-us/download/details.aspx?id=8328</a><br>　　<a href="http://www.microsoft.com/en-us/download/details.aspx?id=13523" target="_blank" rel="noopener">http://www.microsoft.com/en-us/download/details.aspx?id=13523</a><br>　　<br>　　– VC12 Packages (Visual C++ 2012 Update 4)<br>　　The two files VSU4vcredist_x86.exe and VSU4vcredist_x64.exe to be download are on the same page:<br>　　<a href="http://www.microsoft.com/en-us/download/details.aspx?id=30679" target="_blank" rel="noopener">http://www.microsoft.com/en-us/download/details.aspx?id=30679</a><br>　　<br>　　– VC13 Packages (Visual C++ 2013)<br>　　The two files VSU4vcredist_x86.exe and VSU4vcredist_x64.exe to be download are on the same page:<br>　　<a href="https://www.microsoft.com/en-us/download/details.aspx?id=40784" target="_blank" rel="noopener">https://www.microsoft.com/en-us/download/details.aspx?id=40784</a><br>　　<br>　　– VC15 Packages (Visual C++ 2015)<br>　　The two files vcredist_x86.exe and vcredist_x64.exe to be download are on the same page:<br>　　<a href="http://www.microsoft.com/fr-fr/download/details.aspx?id=48145" target="_blank" rel="noopener">http://www.microsoft.com/fr-fr/download/details.aspx?id=48145</a><br>　　<br>　　If you have a 64-bit Windows, you must install both 32 and 64bit versions, even if you do not use Wampserver 64 bit.<br>　　<br>　　不同版本对应的The MSVC runtime libraries也不一样。建议安装全了，要不会报错误(32bit 和 64bit 全都安装)。</p>
+</blockquote>
+<p>这段提示来自于 <a href="http://www.downza.cn/soft/30324.html" target="_blank" rel="noopener">第三方Wamp下载页</a> ，最后似乎说的是 VC运行库 的 <code>32位</code> 和 <code>64位</code> 都要装，我没有全装但问题已经解决。</p>
+<h1 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h1><p><a href="https://www.cnblogs.com/tnnyang/p/5988150.html" target="_blank" rel="noopener">https://www.cnblogs.com/tnnyang/p/5988150.html</a><br><a href="http://blog.51cto.com/hiker88/1834669" target="_blank" rel="noopener">http://blog.51cto.com/hiker88/1834669</a></p>
+<p>欢迎大家补充~</p>
 
     </div>
 
@@ -260,7 +281,8 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/%E6%97%A5%E6%9C%9F%E6%97%B6%E9%97%B4/" rel="tag"><i class="fa fa-tag"></i> 日期时间</a>
+              <a href="/tags/wamp/" rel="tag"><i class="fa fa-tag"></i> wamp</a>
+              <a href="/tags/install/" rel="tag"><i class="fa fa-tag"></i> install</a>
           </div>
 
         
@@ -268,11 +290,11 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item">
-    <a href="/zh-cn/2018/12/sougoupinyin-install/" rel="prev" title="Ubuntu 18.04 Desktop 安装搜狗输入法">
-      <i class="fa fa-chevron-left"></i> Ubuntu 18.04 Desktop 安装搜狗输入法
-    </a></div>
       <div class="post-nav-item"></div>
+      <div class="post-nav-item">
+    <a href="/zh-cn/2018/12/sougoupinyin-install/" rel="next" title="Ubuntu 18.04 Desktop 安装搜狗输入法">
+      Ubuntu 18.04 Desktop 安装搜狗输入法 <i class="fa fa-chevron-right"></i>
+    </a></div>
     </div>
       </footer>
     
@@ -332,7 +354,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#相关参数"><span class="nav-number">1.</span> <span class="nav-text">相关参数:</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装环境"><span class="nav-number">1.</span> <span class="nav-text">安装环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题描述及解决办法"><span class="nav-number">2.</span> <span class="nav-text">问题描述及解决办法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#VCRUNTIME140-DLL"><span class="nav-number">2.1.</span> <span class="nav-text">VCRUNTIME140.DLL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API-MS-WIN-CRT-RUNTIME-L1-1-0-DLL"><span class="nav-number">2.2.</span> <span class="nav-text">API-MS-WIN-CRT-RUNTIME-L1-1-0.DLL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MSVCR110-DLL"><span class="nav-number">2.3.</span> <span class="nav-text">MSVCR110.DLL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#官方给的提示："><span class="nav-number">2.4.</span> <span class="nav-text">官方给的提示：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料："><span class="nav-number">3.</span> <span class="nav-text">参考资料：</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

@@ -1,21 +1,27 @@
-@media screen and (min-width: 541px) {
+@media screen and (min-width: 1200px) {
     #profile-img {
         width: 120px;
     };
 }
-@media screen and (max-width: 540px) {
+@media screen and (max-width: 1199px) {
     #profile-img {
-        margin: 10px 0;
-        width: 100px;
+        /* margin: 10px 0; */
+        width: 110px;
     };
 }
-@media screen and (max-width: 507px) {
+@media screen and (max-width: 649px) {
     #profile-img {
-        margin: 20px 0;
+        margin: 7px 0;
         width: 80px;
     };
 }
-@media screen and (max-width: 470px) {
+@media screen and (max-width: 408px) {
+    #profile-img {
+        margin: 15px 0;
+        width: 70px;
+    };
+}
+@media screen and (max-width: 391px) {
     #profile-img {
         display: none;
     };
