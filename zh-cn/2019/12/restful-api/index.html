@@ -47,21 +47,22 @@
   };
 </script>
 
-  <meta name="description" content="安裝 Wamp Server 时，不论是新老电脑，总有人会遇到缺少文件的问题。我也遇到了，查了很久才找到解决的方法，加以总结。">
+  <meta name="description" content="编写 RESTful API 服务之前，先深入了解一下。">
 <meta property="og:type" content="article">
-<meta property="og:title" content="WAMP 安裝——缺少文件（VCRUNTIME140.DLL、API-MS-WIN-CRT-RUNTIME-L1-1-0.DLL、MSVCR110.DLL）">
-<meta property="og:url" content="https:&#x2F;&#x2F;2015wuji01.github.io&#x2F;zh-cn&#x2F;2018&#x2F;10&#x2F;wamp-install&#x2F;">
+<meta property="og:title" content="我对 RESTful API 的理解">
+<meta property="og:url" content="https:&#x2F;&#x2F;2015wuji01.github.io&#x2F;zh-cn&#x2F;2019&#x2F;12&#x2F;restful-api&#x2F;">
 <meta property="og:site_name" content="苏亦坤的博客">
-<meta property="og:description" content="安裝 Wamp Server 时，不论是新老电脑，总有人会遇到缺少文件的问题。我也遇到了，查了很久才找到解决的方法，加以总结。">
+<meta property="og:description" content="编写 RESTful API 服务之前，先深入了解一下。">
 <meta property="og:locale" content="zh_CN">
-<meta property="article:published_time" content="2018-10-01T14:03:24.000Z">
-<meta property="article:modified_time" content="2018-10-01T14:03:24.000Z">
+<meta property="article:published_time" content="2019-12-11T14:55:20.000Z">
+<meta property="article:modified_time" content="2019-12-11T14:55:20.000Z">
 <meta property="article:author" content="WuChienKun">
-<meta property="article:tag" content="wamp">
-<meta property="article:tag" content="install">
+<meta property="article:tag" content="restful">
+<meta property="article:tag" content="rfc">
+<meta property="article:tag" content="状态码">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://2015wuji01.github.io/zh-cn/2018/10/wamp-install/">
+<link rel="canonical" href="https://2015wuji01.github.io/zh-cn/2019/12/restful-api/">
 
 
 <script id="page-configurations">
@@ -73,7 +74,7 @@
   };
 </script>
 
-  <title>WAMP 安裝——缺少文件（VCRUNTIME140.DLL、API-MS-WIN-CRT-RUNTIME-L1-1-0.DLL、MSVCR110.DLL） | 苏亦坤的博客</title>
+  <title>我对 RESTful API 的理解 | 苏亦坤的博客</title>
   
 
 
@@ -197,7 +198,7 @@
   
   
   <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-cn">
-    <link itemprop="mainEntityOfPage" href="https://2015wuji01.github.io/zh-cn/2018/10/wamp-install/">
+    <link itemprop="mainEntityOfPage" href="https://2015wuji01.github.io/zh-cn/2019/12/restful-api/">
 
     <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
       <meta itemprop="image" content="/images/avatar.jpg">
@@ -210,7 +211,7 @@
     </span>
       <header class="post-header">
         <h1 class="post-title" itemprop="name headline">
-          WAMP 安裝——缺少文件（VCRUNTIME140.DLL、API-MS-WIN-CRT-RUNTIME-L1-1-0.DLL、MSVCR110.DLL）
+          我对 RESTful API 的理解
         </h1>
 
         <div class="post-meta">
@@ -220,7 +221,7 @@
               </span>
               <span class="post-meta-item-text">发表于</span>
 
-              <time title="创建时间：2018-10-01 22:03:24" itemprop="dateCreated datePublished" datetime="2018-10-01T22:03:24+08:00">2018-10-01</time>
+              <time title="创建时间：2019-12-11 22:55:20" itemprop="dateCreated datePublished" datetime="2019-12-11T22:55:20+08:00">2019-12-11</time>
             </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -228,8 +229,8 @@
               </span>
               <span class="post-meta-item-text">分类于</span>
                 <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
-                  <a href="/categories/software/" itemprop="url" rel="index">
-                    <span itemprop="name">software</span>
+                  <a href="/categories/HTTP/" itemprop="url" rel="index">
+                    <span itemprop="name">HTTP</span>
                   </a>
                 </span>
             </span>
@@ -245,32 +246,100 @@
     <div class="post-body" itemprop="articleBody">
 
       
-        <p>安裝 Wamp Server 时，不论是新老电脑，总有人会遇到缺少文件的问题。我也遇到了，查了很久才找到解决的方法，加以总结。</p>
+        <p>编写 RESTful API 服务之前，先深入了解一下。</p>
 <a id="more"></a>
 
-<h1 id="安装环境"><a href="#安装环境" class="headerlink" title="安装环境"></a>安装环境</h1><ul>
-<li>win7 SP1 旗舰版</li>
-<li>Wampserver 64bit v3.0.6</li>
+<h2 id="预备知识"><a href="#预备知识" class="headerlink" title="预备知识"></a>预备知识</h2><ul>
+<li><a href="https://duoani.github.io/HTTP-RFCs.zh-cn/RFC7231.html#org04053c2" target="_blank" rel="noopener">HTTP 请求的8种方法</a></li>
+<li>了解 <strong>幂等</strong> 的概念注：<a href="https://duoani.github.io/HTTP-RFCs.zh-cn/RFC7231.html#orga71ccac" target="_blank" rel="noopener">HTTP 请求方法的3种属性</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2011/09/restful.html" target="_blank" rel="noopener">REST 相关概念</a></li>
+<li>RESTful API 相关知识<ul>
+<li><a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html" target="_blank" rel="noopener">Restful API 设计指南</a> 注：其中外链的 <em>第七章状态码完全列表</em> 是 RFC2616 中的标准，建议以 RFC7231 为准，最新状态码参考 <a href="https://httpstatuses.com/" target="_blank" rel="noopener">HTTP 状态码完全列表</a></li>
+<li>一份关于REST理解的总结：<a href="https://learnku.com/articles/3785/understanding-of-rest" target="_blank" rel="noopener">https://learnku.com/articles/3785/understanding-of-rest</a></li>
 </ul>
-<h1 id="问题描述及解决办法"><a href="#问题描述及解决办法" class="headerlink" title="问题描述及解决办法"></a>问题描述及解决办法</h1><h2 id="VCRUNTIME140-DLL"><a href="#VCRUNTIME140-DLL" class="headerlink" title="VCRUNTIME140.DLL"></a>VCRUNTIME140.DLL</h2><p>第一次安装时，最后提示缺少 <code>VCRUNTIME140.dll</code> 文件，于是尝试下载安装该文件，均失败。</p>
-<p>第二次，参考了一篇文章，了解到 Wamp 官方网站在下载时有提示。因为是英文所以没有在意，按照官网的链接，下载安装了 VC12 的运行库，结果仍提示失败。</p>
-<p>第三次，查阅其他资料，尝试安装 VC15 的运行库，这个问题就解决了。接下来就提示缺失 <code>API-MS-WIN-CRT-RUNTIME-L1-1-0.DLL</code> 文件。</p>
-<p>相关的运行库文件下载地址在下方 “官方给的提示” 中给出，下载对应版本即可。</p>
-<h2 id="API-MS-WIN-CRT-RUNTIME-L1-1-0-DLL"><a href="#API-MS-WIN-CRT-RUNTIME-L1-1-0-DLL" class="headerlink" title="API-MS-WIN-CRT-RUNTIME-L1-1-0.DLL"></a>API-MS-WIN-CRT-RUNTIME-L1-1-0.DLL</h2><p>这个问题是依靠安装 windons 的一个更新 <code>Windows Server 2008 R2 x64 Edition 更新程序 (KB2999226)</code> 来解决。</p>
-<p>参考了一篇文章，简明扼要：</p>
+</li>
+</ul>
+<h2 id="比较重要的知识点"><a href="#比较重要的知识点" class="headerlink" title="比较重要的知识点"></a>比较重要的知识点</h2><ul>
+<li>不在 URI 中使用动词</li>
+<li>状态码的重要意义，即了解各种 HTTP 动作返回的对应状态码及内容</li>
+<li>API 设计应站在资源的角度，懂得利用资源的关系拓展 API 的接口</li>
+<li>API 接口允许冗余，即可以存在两个不同的接口，具有相同的目的和结果</li>
+<li>推荐将 API 版本号加在 Header 中</li>
+</ul>
+<h2 id="RESTful-API-解决的问题或误区"><a href="#RESTful-API-解决的问题或误区" class="headerlink" title="RESTful API 解决的问题或误区"></a>RESTful API 解决的问题或误区</h2><h3 id="URI-中无动词，如何处理动作，例如：转账、支付"><a href="#URI-中无动词，如何处理动作，例如：转账、支付" class="headerlink" title="URI 中无动词，如何处理动作，例如：转账、支付"></a>URI 中无动词，如何处理动作，例如：转账、支付</h3><p>将 <strong>动作</strong> 改成 <strong>服务</strong>。</p>
 <blockquote>
-<p>从官网下载了 WAMP3.0 并安装，却提示缺少 api-ms-win-crt-runtime-l1-1-0.dll 文件，依照安装需求安装V15，无效。<br>然后依次VC9，VC10，VC11，VC13, VC15全装了，依然没有这个文件。从另一台服务器拷贝这个文件，用 regsvr32 注册不了，求教51终于得到正解，这个文件需要安装 KB2999226 。至此解决。</p>
-<p>官方解释：<br><a href="https://helpx.adobe.com/tw/creative-cloud/kb/error_on_launch.html" target="_blank" rel="noopener">https://helpx.adobe.com/tw/creative-cloud/kb/error_on_launch.html</a><br><a href="https://support.microsoft.com/zh-tw/kb/2999226" target="_blank" rel="noopener">https://support.microsoft.com/zh-tw/kb/2999226</a></p>
-<p>KB2999226下载地址：<br><a href="https://www.microsoft.com/en-us/download/details.aspx?id=49062" target="_blank" rel="noopener">https://www.microsoft.com/en-us/download/details.aspx?id=49062</a></p>
+<p>如果某些动作是HTTP动词表示不了的，你就应该把动作做成一种资源。比如网上汇款，从账户1向账户2汇款500元，错误的URI是：</p>
+<figure class="highlight angelscript"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line">POST /accounts/<span class="number">1</span>/transfer/<span class="number">500</span>/to/<span class="number">2</span></span></pre></td></tr></table></figure>
+
+<p>正确的写法是把动词transfer改成名词transaction，资源不能是动词，但是可以是一种服务：</p>
+<figure class="highlight"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="keyword">POST</span> <span class="string">/transaction</span> HTTP/1.1</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">2</span></pre></td><td class="code"><pre><span class="line"><span class="attribute">Host</span>: 127.0.0.1</span></pre></td></tr><tr><td class="gutter"><pre><span class="line">3</span></pre></td><td class="code"><pre><span class="line"></span></pre></td></tr><tr><td class="gutter"><pre><span class="line">4</span></pre></td><td class="code"><pre><span class="line">from=1&amp;to=2&amp;amount=500.00</span></pre></td></tr></table></figure>
 </blockquote>
-<h2 id="MSVCR110-DLL"><a href="#MSVCR110-DLL" class="headerlink" title="MSVCR110.DLL"></a>MSVCR110.DLL</h2><p>没有遇到缺失此文件的提示，查阅相关资料，安装 VC运行库 应该就能解决该问题。</p>
-<h2 id="官方给的提示："><a href="#官方给的提示：" class="headerlink" title="官方给的提示："></a>官方给的提示：</h2><blockquote>
-<p>　　— Visual C++ Packages —<br>　　The MSVC runtime libraries VC9, VC10, VC11 are required for Wampserver 2.4, 2.5 and 3.0, even if you use only Apache and PHP versions with VC11. Runtimes VC13, VC14 is required for PHP 7 and Apache 2.4.17</p>
-<p>　　– VC9 Packages (Visual C++ 2008 SP1)<br>　　<a href="http://www.microsoft.com/en-us/download/details.aspx?id=5582" target="_blank" rel="noopener">http://www.microsoft.com/en-us/download/details.aspx?id=5582</a><br>　　<a href="http://www.microsoft.com/en-us/download/details.aspx?id=2092" target="_blank" rel="noopener">http://www.microsoft.com/en-us/download/details.aspx?id=2092</a><br>　　<br>　　– VC10 Packages (Visual C++ 2010 SP1)<br>　　<a href="http://www.microsoft.com/en-us/download/details.aspx?id=8328" target="_blank" rel="noopener">http://www.microsoft.com/en-us/download/details.aspx?id=8328</a><br>　　<a href="http://www.microsoft.com/en-us/download/details.aspx?id=13523" target="_blank" rel="noopener">http://www.microsoft.com/en-us/download/details.aspx?id=13523</a><br>　　<br>　　– VC12 Packages (Visual C++ 2012 Update 4)<br>　　The two files VSU4vcredist_x86.exe and VSU4vcredist_x64.exe to be download are on the same page:<br>　　<a href="http://www.microsoft.com/en-us/download/details.aspx?id=30679" target="_blank" rel="noopener">http://www.microsoft.com/en-us/download/details.aspx?id=30679</a><br>　　<br>　　– VC13 Packages (Visual C++ 2013)<br>　　The two files VSU4vcredist_x86.exe and VSU4vcredist_x64.exe to be download are on the same page:<br>　　<a href="https://www.microsoft.com/en-us/download/details.aspx?id=40784" target="_blank" rel="noopener">https://www.microsoft.com/en-us/download/details.aspx?id=40784</a><br>　　<br>　　– VC15 Packages (Visual C++ 2015)<br>　　The two files vcredist_x86.exe and vcredist_x64.exe to be download are on the same page:<br>　　<a href="http://www.microsoft.com/fr-fr/download/details.aspx?id=48145" target="_blank" rel="noopener">http://www.microsoft.com/fr-fr/download/details.aspx?id=48145</a><br>　　<br>　　If you have a 64-bit Windows, you must install both 32 and 64bit versions, even if you do not use Wampserver 64 bit.<br>　　<br>　　不同版本对应的The MSVC runtime libraries也不一样。建议安装全了，要不会报错误(32bit 和 64bit 全都安装)。</p>
+<h3 id="获取多个相关联的独立资源，难道要请求多次吗？"><a href="#获取多个相关联的独立资源，难道要请求多次吗？" class="headerlink" title="获取多个相关联的独立资源，难道要请求多次吗？"></a>获取多个相关联的独立资源，难道要请求多次吗？</h3><p>例如：同时获取用户，商品，订单，供应商 4 个资源</p>
+<p>利用资源之间的关系，例如：</p>
+<blockquote>
+<figure class="highlight routeros"><table><tr><td class="gutter"><pre><span class="line">1</span></pre></td><td class="code"><pre><span class="line"><span class="builtin-name">get</span> /api/orders/10?<span class="attribute">include</span>=user,vendor,product</span></pre></td></tr></table></figure>
+<p>意思就是我需要 10 号订单的数据，同时需要订单相关的用户，供应商，商品信息。注意这里是单数，表示其相关的单个资源。</p>
 </blockquote>
-<p>这段提示来自于 <a href="http://www.downza.cn/soft/30324.html" target="_blank" rel="noopener">第三方Wamp下载页</a> ，最后似乎说的是 VC运行库 的 <code>32位</code> 和 <code>64位</code> 都要装，我没有全装但问题已经解决。</p>
-<h1 id="参考资料："><a href="#参考资料：" class="headerlink" title="参考资料："></a>参考资料：</h1><p><a href="https://www.cnblogs.com/tnnyang/p/5988150.html" target="_blank" rel="noopener">https://www.cnblogs.com/tnnyang/p/5988150.html</a><br><a href="http://blog.51cto.com/hiker88/1834669" target="_blank" rel="noopener">http://blog.51cto.com/hiker88/1834669</a></p>
-<p>欢迎大家补充~</p>
+<h3 id="接口的设计"><a href="#接口的设计" class="headerlink" title="接口的设计"></a>接口的设计</h3><blockquote>
+<p>利用好资源的关系和嵌套我们再补充几个接口</p>
+<table>
+<thead>
+<tr>
+<th>动词</th>
+<th>url</th>
+<th>描述</th>
+<th>includes</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>get</td>
+<td>/api/vendors/{id}/products</td>
+<td>获取某个供应商的所有商品</td>
+<td>vendor</td>
+</tr>
+<tr>
+<td>get</td>
+<td>/api/vendors/{id}/products/{id}</td>
+<td>获取某个供应商的某个商品</td>
+<td>vendor</td>
+</tr>
+<tr>
+<td>get</td>
+<td>/api/vendors</td>
+<td>获取供应商列表</td>
+<td>products</td>
+</tr>
+<tr>
+<td>get</td>
+<td>/api/user/orders</td>
+<td>我的订单列表</td>
+<td>vendor,products</td>
+</tr>
+<tr>
+<td>get</td>
+<td>/api/users/{id}/orders</td>
+<td>某个用户的订单列表</td>
+<td>vendor,products</td>
+</tr>
+</tbody></table>
+<p>注意最后两个，这里是参考了 github，用单数的 user 表示当前用户，因为我们如果有 token，服务器就知道我们是谁。</p>
+<p>当然这里只是个例子，真实业务我们可能并不能查看别人下的订单。</p>
+</blockquote>
+<h2 id="附录"><a href="#附录" class="headerlink" title="附录"></a>附录</h2><ul>
+<li><a href="https://httpstatuses.com/" target="_blank" rel="noopener">HTTP 状态码完全列表</a></li>
+<li><a href="https://cloud.tencent.com/developer/section/1190064" target="_blank" rel="noopener">RFC2616 中文翻译</a></li>
+<li><a href="https://duoani.github.io/HTTP-RFCs.zh-cn/RFC7231.html" target="_blank" rel="noopener">RFC7231 中文翻译</a></li>
+</ul>
+<h2 id="引用参考"><a href="#引用参考" class="headerlink" title="引用参考"></a>引用参考</h2><ul>
+<li><a href="http://www.ruanyifeng.com/blog/2011/09/restful.html" target="_blank" rel="noopener">理解RESTful架构 - 阮一峰的网络日志</a></li>
+<li><a href="http://www.ruanyifeng.com/blog/2014/05/restful_api.html" target="_blank" rel="noopener">RESTful API 设计指南 - 阮一峰的网络日志</a>（入门必看）</li>
+<li><a href="https://learnku.com/articles/3785/understanding-of-rest" target="_blank" rel="noopener">对 REST 的理解 | Laravel China 社区</a>（对状态码和资源的请求和处理写的很好）</li>
+<li><a href="https://learnku.com/articles/9126/writing-more-descriptive-restful-api" target="_blank" rel="noopener">编写更具有描述性的 RESTful API | Laravel China 社区</a>（dingo/api + Fractal 对资源关联处理）</li>
+<li><a href="https://learnku.com/articles/7048/a-summary-of-the-design-of-restful-api#adf9c6" target="_blank" rel="noopener">关于 RESTful API 设计的总结 | Laravel China 社区</a> （Token 和 Sign这一段不太懂）</li>
+<li><a href="https://learnku.com/articles/13797/restful-api-best-practice" target="_blank" rel="noopener">RESTful API 最佳实践 | Laravel China 社区</a></li>
+<li><a href="https://naotu.baidu.com/file/61d976e0117152524bc18b8772c930c9?token=e45339df1cdd6ff2" target="_blank" rel="noopener">上文（RESTful API 最佳实践）中的思维导图</a></li>
+</ul>
+<p>注：引用内容均加上引用标记</p>
 
     </div>
 
@@ -281,8 +350,9 @@
       <footer class="post-footer">
           
           <div class="post-tags">
-              <a href="/tags/wamp/" rel="tag"><i class="fa fa-tag"></i> wamp</a>
-              <a href="/tags/install/" rel="tag"><i class="fa fa-tag"></i> install</a>
+              <a href="/tags/restful/" rel="tag"><i class="fa fa-tag"></i> restful</a>
+              <a href="/tags/rfc/" rel="tag"><i class="fa fa-tag"></i> rfc</a>
+              <a href="/tags/%E7%8A%B6%E6%80%81%E7%A0%81/" rel="tag"><i class="fa fa-tag"></i> 状态码</a>
           </div>
 
         
@@ -290,10 +360,13 @@
 
         
     <div class="post-nav">
-      <div class="post-nav-item"></div>
       <div class="post-nav-item">
-    <a href="/zh-cn/2018/12/sougoupinyin-install/" rel="next" title="Ubuntu 18.04 Desktop 安装搜狗输入法">
-      Ubuntu 18.04 Desktop 安装搜狗输入法 <i class="fa fa-chevron-right"></i>
+    <a href="/zh-cn/2018/12/sougoupinyin-install/" rel="prev" title="Ubuntu 18.04 Desktop 安装搜狗输入法">
+      <i class="fa fa-chevron-left"></i> Ubuntu 18.04 Desktop 安装搜狗输入法
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/zh-cn/2019/12/composer-version/" rel="next" title="软件版本符号说明">
+      软件版本符号说明 <i class="fa fa-chevron-right"></i>
     </a></div>
     </div>
       </footer>
@@ -354,7 +427,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
-          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-1"><a class="nav-link" href="#安装环境"><span class="nav-number">1.</span> <span class="nav-text">安装环境</span></a></li><li class="nav-item nav-level-1"><a class="nav-link" href="#问题描述及解决办法"><span class="nav-number">2.</span> <span class="nav-text">问题描述及解决办法</span></a><ol class="nav-child"><li class="nav-item nav-level-2"><a class="nav-link" href="#VCRUNTIME140-DLL"><span class="nav-number">2.1.</span> <span class="nav-text">VCRUNTIME140.DLL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#API-MS-WIN-CRT-RUNTIME-L1-1-0-DLL"><span class="nav-number">2.2.</span> <span class="nav-text">API-MS-WIN-CRT-RUNTIME-L1-1-0.DLL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#MSVCR110-DLL"><span class="nav-number">2.3.</span> <span class="nav-text">MSVCR110.DLL</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#官方给的提示："><span class="nav-number">2.4.</span> <span class="nav-text">官方给的提示：</span></a></li></ol></li><li class="nav-item nav-level-1"><a class="nav-link" href="#参考资料："><span class="nav-number">3.</span> <span class="nav-text">参考资料：</span></a></li></ol></div>
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#预备知识"><span class="nav-number">1.</span> <span class="nav-text">预备知识</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#比较重要的知识点"><span class="nav-number">2.</span> <span class="nav-text">比较重要的知识点</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#RESTful-API-解决的问题或误区"><span class="nav-number">3.</span> <span class="nav-text">RESTful API 解决的问题或误区</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#URI-中无动词，如何处理动作，例如：转账、支付"><span class="nav-number">3.1.</span> <span class="nav-text">URI 中无动词，如何处理动作，例如：转账、支付</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#获取多个相关联的独立资源，难道要请求多次吗？"><span class="nav-number">3.2.</span> <span class="nav-text">获取多个相关联的独立资源，难道要请求多次吗？</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#接口的设计"><span class="nav-number">3.3.</span> <span class="nav-text">接口的设计</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#附录"><span class="nav-number">4.</span> <span class="nav-text">附录</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#引用参考"><span class="nav-number">5.</span> <span class="nav-text">引用参考</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 

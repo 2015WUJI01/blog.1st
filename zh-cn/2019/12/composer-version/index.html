@@ -47,17 +47,21 @@
   };
 </script>
 
-  <meta name="description" content="吴健坤">
-<meta property="og:type" content="website">
-<meta property="og:title" content="苏亦坤的博客">
-<meta property="og:url" content="https:&#x2F;&#x2F;2015wuji01.github.io&#x2F;tags&#x2F;%E8%BE%93%E5%85%A5%E6%B3%95&#x2F;">
+  <meta name="description" content="每次都不记得 ^、~ 的区别……">
+<meta property="og:type" content="article">
+<meta property="og:title" content="软件版本符号说明">
+<meta property="og:url" content="https:&#x2F;&#x2F;2015wuji01.github.io&#x2F;zh-cn&#x2F;2019&#x2F;12&#x2F;composer-version&#x2F;">
 <meta property="og:site_name" content="苏亦坤的博客">
-<meta property="og:description" content="吴健坤">
+<meta property="og:description" content="每次都不记得 ^、~ 的区别……">
 <meta property="og:locale" content="zh_CN">
+<meta property="article:published_time" content="2019-12-12T03:14:20.000Z">
+<meta property="article:modified_time" content="2019-12-12T03:14:20.000Z">
 <meta property="article:author" content="WuChienKun">
+<meta property="article:tag" content="npm">
+<meta property="article:tag" content="composer">
 <meta name="twitter:card" content="summary">
 
-<link rel="canonical" href="https://2015wuji01.github.io/tags/%E8%BE%93%E5%85%A5%E6%B3%95/">
+<link rel="canonical" href="https://2015wuji01.github.io/zh-cn/2019/12/composer-version/">
 
 
 <script id="page-configurations">
@@ -65,11 +69,11 @@
   CONFIG.page = {
     sidebar: "",
     isHome: false,
-    isPost: false
+    isPost: true
   };
 </script>
 
-  <title>标签: 输入法 | 苏亦坤的博客</title>
+  <title>软件版本符号说明 | 苏亦坤的博客</title>
   
 
 
@@ -188,50 +192,169 @@
           <div class="content">
             
 
+  <div class="posts-expand">
+      
   
   
-  
-  <div class="post-block">
-    <div class="posts-collapse">
-      <div class="collection-title">
-        <h1 class="collection-header">输入法
-          <small>标签</small>
+  <article itemscope itemtype="http://schema.org/Article" class="post-block " lang="zh-cn">
+    <link itemprop="mainEntityOfPage" href="https://2015wuji01.github.io/zh-cn/2019/12/composer-version/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.jpg">
+      <meta itemprop="name" content="WuChienKun">
+      <meta itemprop="description" content="吴健坤">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="苏亦坤的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          软件版本符号说明
         </h1>
-      </div>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-calendar-o"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+
+              <time title="创建时间：2019-12-12 11:14:20" itemprop="dateCreated datePublished" datetime="2019-12-12T11:14:20+08:00">2019-12-12</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="fa fa-folder-o"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E5%B8%B8%E8%AF%86/" itemprop="url" rel="index">
+                    <span itemprop="name">常识</span>
+                  </a>
+                </span>
+            </span>
+
+          
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
 
       
-    <div class="collection-year">
-      <h1 class="collection-header">2018</h1>
+        <p>每次都不记得 <code>^</code>、<code>~</code> 的区别……</p>
+<a id="more"></a>
+
+<h2 id="符号说明"><a href="#符号说明" class="headerlink" title="符号说明"></a>符号说明</h2><p>版本号格式为 <code>major.minor.patch</code>，以下用 <code>m.m.p</code> 代替</p>
+<ol>
+<li><p>直接指定</p>
+<ul>
+<li><code>m.m.p</code></li>
+</ul>
+</li>
+<li><p>大小于 <code>&gt;</code> <code>&gt;=</code> <code>&lt;</code> <code>&lt;=</code></p>
+<ul>
+<li><code>&gt;=m.m.p</code></li>
+<li><code>&lt;m.m.p</code></li>
+<li>…</li>
+</ul>
+</li>
+<li><p>最右侧任意 <code>~</code></p>
+<ul>
+<li><p><code>~m</code>：<code>&gt;=m.0.0</code>，且 <code>minor</code> 及 <code>patch</code> 任意</p>
+<ul>
+<li><code>~1</code></li>
+</ul>
+</li>
+<li><p><code>~m.m</code>：<code>&gt;=m.m.0</code>，且 <code>patch</code> 任意</p>
+<ul>
+<li><code>~1.0</code></li>
+<li><code>~1.2</code></li>
+</ul>
+</li>
+<li><p><code>~m.m.p</code>：<code>&gt;=m.m.p</code>，且 <code>patch</code> 为大于 <code>p</code> 的任意值</p>
+<ul>
+<li><code>~1.0.0</code></li>
+<li><code>~1.2.0</code></li>
+<li><code>~1.0.2</code></li>
+</ul>
+</li>
+</ul>
+</li>
+<li><p>非 0 右侧任意 <code>^</code>，从左向右，第一个非 0 号的右侧任意</p>
+<ul>
+<li><code>^0.0.p</code>：相当于直接指定 <code>0.0.p</code><ul>
+<li><code>~0.0.1</code></li>
+</ul>
+</li>
+<li><code>^0.m.p</code>：<code>major</code> 固定，<code>minor</code> 固定，<code>patch</code> 为大于 <code>p</code> 的任意值<ul>
+<li><code>~0.2.3</code></li>
+</ul>
+</li>
+<li><code>^m.m.p</code></li>
+</ul>
+</li>
+<li><p>任意符 <code>x</code></p>
+<ul>
+<li><code>m.m.x</code>：<code>x</code> 位置表示任意</li>
+</ul>
+</li>
+<li><p>版本任意 <code>*</code>，<code>留空</code></p>
+<ul>
+<li><code>*</code></li>
+<li><code>留空</code></li>
+</ul>
+</li>
+<li><p>版本区间范围，包含首尾版本号</p>
+<ul>
+<li><code>m.m.p-M.M.P</code>：版本 <code>&gt;=m.m.p</code> 且 <code>&lt;=M.M.P</code></li>
+</ul>
+</li>
+<li><p>或运算符 <code>||</code>，<code>version1||version2||...version</code> 版本要求满足其一即可</p>
+<ul>
+<li><code>1.1.1-1.2.9 || &gt;=3.5.0 || ^0.1.2</code></li>
+</ul>
+</li>
+</ol>
+
     </div>
 
-  <article itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
+    
+    
+    
 
-      <div class="post-meta">
-        <time itemprop="dateCreated"
-              datetime="2018-12-05T13:49:33+08:00"
-              content="2018-12-05">
-          12-05
-        </time>
-      </div>
+      <footer class="post-footer">
+          
+          <div class="post-tags">
+              <a href="/tags/npm/" rel="tag"><i class="fa fa-tag"></i> npm</a>
+              <a href="/tags/composer/" rel="tag"><i class="fa fa-tag"></i> composer</a>
+          </div>
 
-      <h2 class="post-title">
-          <a class="post-title-link" href="/zh-cn/2018/12/sougoupinyin-install/" itemprop="url">
-            <span itemprop="name">Ubuntu 18.04 Desktop 安装搜狗输入法</span>
-          </a>
-      </h2>
+        
 
-    </header>
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/zh-cn/2019/12/restful-api/" rel="prev" title="我对 RESTful API 的理解">
+      <i class="fa fa-chevron-left"></i> 我对 RESTful API 的理解
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/zh-cn/2020/01/php-date/" rel="next" title="PHP date() 函数参数">
+      PHP date() 函数参数 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
   </article>
+  
+  
+  
 
-    </div>
   </div>
-  
-  
-  
-
-  
-
 
 
           </div>
@@ -282,6 +405,7 @@
 
       <!--noindex-->
       <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#符号说明"><span class="nav-number">1.</span> <span class="nav-text">符号说明</span></a></li></ol></div>
       </div>
       <!--/noindex-->
 
