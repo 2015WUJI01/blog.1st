@@ -1,3 +1,8 @@
+#profile-img {
+    width: 120px;
+    position: absolute;
+    right: 3%;
+};
 @media screen and (min-width: 1200px) {
     #profile-img {
         width: 120px;
@@ -11,17 +16,14 @@
 @media screen and (max-width: 649px) {
     #profile-img {
         margin: 7px 0;
-        width: 80px;
+        width: 100px;
     };
 }
-@media screen and (max-width: 408px) {
+@media screen and (max-width: 448px) {
     #profile-img {
-        margin: 15px 0;
-        width: 70px;
-    };
-}
-@media screen and (max-width: 391px) {
-    #profile-img {
-        display: none;
+        position: relative;
+        right: 0;
+        margin: 20px auto;
+        width: 100px;
     };
 }
