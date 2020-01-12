@@ -142,7 +142,15 @@
       
       
           
+      
+          
+      
+          
             
+            
+                
+            
+                
             
                 
                   
@@ -155,7 +163,19 @@
                 
             
                 
+                  
+                
             
+                
+            
+                
+                  
+                
+            
+                
+            
+                
+                  
                 
             
           
@@ -178,7 +198,15 @@
       
       
           
+      
+          
+      
+          
             
+            
+                
+            
+                
             
                 
                   
@@ -191,7 +219,19 @@
                 
             
                 
+                  
+                
             
+                
+            
+                
+                  
+                
+            
+                
+            
+                
+                  
                 
             
           
@@ -206,7 +246,7 @@
       
       
 
-    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>文章<span class="badge">5</span></a>
+    <a href="/archives/" rel="section"><i class="fa fa-fw fa-archive"></i>文章<span class="badge">7</span></a>
 
   </li>
         <li class="menu-item menu-item-categories">
@@ -214,7 +254,15 @@
       
       
           
+      
+          
+      
+          
             
+            
+                
+            
+                
             
                 
                   
@@ -227,7 +275,19 @@
                 
             
                 
+                  
+                
             
+                
+            
+                
+                  
+                
+            
+                
+            
+                
+                  
                 
             
           
@@ -242,7 +302,7 @@
       
       
 
-    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">4</span></a>
+    <a href="/categories/" rel="section"><i class="fa fa-fw fa-th"></i>分类<span class="badge">6</span></a>
 
   </li>
         <li class="menu-item menu-item-常识">
@@ -250,7 +310,15 @@
       
       
           
+      
+          
+      
+          
             
+            
+                
+            
+                
             
                 
                   
@@ -263,7 +331,19 @@
                 
             
                 
+                  
+                
             
+                
+            
+                
+                  
+                
+            
+                
+            
+                
+                  
                 
             
           
@@ -278,7 +358,7 @@
       
       
 
-    <a href="/categories/%E5%B8%B8%E8%AF%86/" rel="section"><i class="fa fa-fw fa-coffee"></i>常识<span class="badge">1</span></a>
+    <a href="/categories/%E5%B8%B8%E8%AF%86/" rel="section"><i class="fa fa-fw fa-coffee"></i>常识<span class="badge">4</span></a>
 
   </li>
         <li class="menu-item menu-item-tags">
@@ -286,7 +366,15 @@
       
       
           
+      
+          
+      
+          
             
+            
+                
+            
+                
             
                 
                   
@@ -299,7 +387,19 @@
                 
             
                 
+                  
+                
             
+                
+            
+                
+                  
+                
+            
+                
+            
+                
+                  
                 
             
           
@@ -314,7 +414,7 @@
       
       
 
-    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">10</span></a>
+    <a href="/tags/" rel="section"><i class="fa fa-fw fa-tags"></i>标签<span class="badge">12</span></a>
 
   </li>
         
@@ -324,7 +424,15 @@
       
       
           
+      
+          
+      
+          
             
+            
+                
+            
+                
             
                 
                   
@@ -337,7 +445,19 @@
                 
             
                 
+                  
+                
             
+                
+            
+                
+                  
+                
+            
+                
+            
+                
+                  
                 
             
           
@@ -363,7 +483,15 @@
       
       
           
+      
+          
+      
+          
             
+            
+                
+            
+                
             
                 
                   
@@ -376,7 +504,19 @@
                 
             
                 
+                  
+                
             
+                
+            
+                
+                  
+                
+            
+                
+            
+                
+                  
                 
             
           
@@ -564,20 +704,20 @@
       <div class="site-state-item site-state-posts">
           <a href="/archives/">
         
-          <span class="site-state-item-count">5</span>
+          <span class="site-state-item-count">7</span>
           <span class="site-state-item-name">日志</span>
         </a>
       </div>
       <div class="site-state-item site-state-categories">
             <a href="/categories/">
           
-        <span class="site-state-item-count">4</span>
+        <span class="site-state-item-count">6</span>
         <span class="site-state-item-name">分类</span></a>
       </div>
       <div class="site-state-item site-state-tags">
             <a href="/tags/">
           
-        <span class="site-state-item-count">10</span>
+        <span class="site-state-item-count">12</span>
         <span class="site-state-item-name">标签</span></a>
       </div>
   </nav>
@@ -681,8 +821,40 @@
 
 
 
+<script>
+if (document.querySelectorAll('div.pdf').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/pdfobject@2/pdfobject.min.js', () => {
+    document.querySelectorAll('div.pdf').forEach(element => {
+      PDFObject.embed(element.getAttribute('target'), element, {
+        pdfOpenParams: {
+          navpanes: 0,
+          toolbar: 0,
+          statusbar: 0,
+          pagemode: 'thumbs',
+          view: 'FitH'
+        },
+        PDFJS_URL: '/lib/pdf/web/viewer.html',
+        height: element.getAttribute('height') || '500px'
+      });
+    });
+  }, window.PDFObject);
+}
+</script>
 
 
+<script>
+if (document.querySelectorAll('pre.mermaid').length) {
+  NexT.utils.getScript('//cdn.jsdelivr.net/npm/mermaid@8/dist/mermaid.min.js', () => {
+    mermaid.initialize({
+      theme: 'forest',
+      logLevel: 3,
+      flowchart: { curve: 'linear' },
+      gantt: { axisFormat: '%m/%d/%Y' },
+      sequence: { actorMargin: 50 }
+    });
+  }, window.mermaid);
+}
+</script>
 
 
   
