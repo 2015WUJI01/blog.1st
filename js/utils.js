@@ -214,6 +214,16 @@ NexT.utils = {
       if (!target) return;
       var isSamePath = target.pathname === location.pathname || target.pathname === location.pathname.replace('index.html', '');
       var isSubPath = target.pathname !== CONFIG.root && location.pathname.indexOf(target.pathname) === 0;
+      /**
+       * 定义一个数组，其中的分类将不会启用 '.menu-item-active' class
+       * 必须是 categories 的一级分类
+       */
+      var disactive = ['常识'];
+      disactive.forEach(element => {
+        if (target.pathname === '/categories/' && location.pathname === '/categories/' + encodeURI(element) + '/')
+          isSubPath = 0;
+      });
+      /***   End    ***/
       element.classList.toggle('menu-item-active', target.hostname === location.hostname && (isSamePath || isSubPath));
     });
   },
